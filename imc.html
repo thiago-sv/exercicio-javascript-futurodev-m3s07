@@ -1,0 +1,254 @@
+<html lang="pt-br">
+<p>Coloque os seus dados na calculadora e calcule o seu IMC:</p>
+<div class="field-age"> <label>Idade</label>
+</div>
+<input type="number" name="age" text="Idade" placeholder="Ex: 35" maxlength="200" id="age" min="0" max="119"> <span
+  class="caption">anos</span>
+<div class="field-height"> <label>Altura</label>
+</div>
+<input type="number" name="height" text="Altura" placeholder="Ex: 165" maxlength="200" id="height" min="0" max="225">
+<span class="caption">cm</span>
+<div class="field-weight"> <label>Peso</label>
+</div>
+<input type="number" name="weight" text="Peso" placeholder="Ex: 62,5" maxlength="200" id="weight" min="0" max="300">
+<span class="caption">kg</span>
+<div>
+  <input type="button" id="submit" name="calculate" value="Calcular">
+</div>
+</div>
+</body>
+<script>
+
+  //[M3S07] Ex 1 - Variáveis, Dados e Operadores
+  const calculate = document.getElementById('submit')
+  // Crie a lógica a partir deste ponto
+  calculate.addEventListener('click', () => {
+
+    const idade = document.getElementById('age').value
+    const peso = document.getElementById('weight').value
+    const altura = document.getElementById('height').value
+    const imc = (peso / (altura * altura))
+
+
+    console.table({ idade: idade, peso: peso, altura: altura, imc: imc });
+    resultadoIMC(imc);
+
+  })
+
+  //[M3S07] Ex 2 - Condicionais
+
+  function resultadoIMC(imc) {
+
+    if (imc < 16) {
+      alert("Magreza grave");
+    } else if (imc >= 16 && imc < 17) {
+      alert("Magreza moderada");
+    } else if (imc >= 17 && imc < 18.5) {
+      alert("Magreza leve");
+    } else if (imc >= 18.5 && imc < 25) {
+      alert("Saudável");
+    } else if (imc >= 25 && imc < 30) {
+      alert("Sobrepeso");
+    } else if (imc >= 30 && imc < 35) {
+      alert("Obesidade grau I");
+    } else if (imc >= 35 && imc < 40) {
+      alert("Obesidade grau II");
+    } else if (imc >= 40) {
+      alert("Obesidade grau III");
+    }
+  }
+
+  function poligono(numeroLadosPoligono, medidaLadoPoligono) {
+    if (numeroLadosPoligono == 3) {
+      console.log("triângulo");
+      console.log("Área do triângulo: " + (medidaLadoPoligono * medidaLadoPoligono) / 2);
+    } else if (numeroLadosPoligono == 4) {
+      console.log("quadrado");
+      console.log("Área do quadrado: " + (medidaLadoPoligono * medidaLadoPoligono));
+    } else if (numeroLadosPoligono == 5) {
+      console.log("pentágono");
+      console.log("Área do pentágono: " + (5 * medidaLadoPoligono * medidaLadoPoligono) / (4 * Math.tan(Math.PI / 5)));
+    } else {
+      console.log("não é polígono");
+    }
+  }
+  // poligono(4, 5);
+
+  function parOuImpar(numero) {
+    if (numero % 2 == 0) {
+      console.log("par");
+    } else {
+      console.log("ímpar");
+    }
+  }
+  //parOuImpar(2)
+
+  //[M3S07] Ex 3 - Estruturas de Repetição
+
+
+
+  function fatorial(numero) {
+    let resultado = 1;
+    for (let i = 1; i <= numero; i++) {
+      resultado = resultado * i;
+    }
+    console.log(resultado);
+  }
+
+  //fatorial(10);
+
+  function inverteString(string) {
+    let resultado = "";
+    for (let i = string.length - 1; i >= 0; i--) {
+      resultado = resultado + string[i];
+    }
+    console.log(resultado);
+  }
+
+  //inverteString("banana");
+
+  function menorMaiorPalavraArray(array) {
+    let menorPalavra = array[0];
+    let maiorPalavra = array[0];
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].length < menorPalavra.length) {
+        menorPalavra = array[i];
+      }
+      if (array[i].length > maiorPalavra.length) {
+        maiorPalavra = array[i];
+      }
+    }
+    console.log("Menor palavra: " + menorPalavra);
+    console.log("Maior palavra " + maiorPalavra);
+  }
+
+  // menorMaiorPalavraArray(['java', 'javascript', 'python', 'html', 'css']);
+
+  function maiorPrimo(numero) {
+    let maiorPrimo = 0;
+    for (let i = 2; i <= numero; i++) {
+      let primo = true;
+      for (let j = 2; j < i; j++) {
+        if (i % j == 0) {
+          primo = false;
+        }
+      }
+      if (primo) {
+        maiorPrimo = i;
+      }
+    }
+    console.log(maiorPrimo);
+  }
+
+  //maiorPrimo(100);
+
+  //[M3S07] Ex 4 - Funções
+
+  function palindromo(string) {
+    let resultado = "";
+    for (let i = string.length - 1; i >= 0; i--) {
+      resultado = resultado + string[i];
+    }
+    if (resultado == string) {
+      console.log("É palíndromo");
+    } else {
+      console.log("Não é palíndromo");
+    }
+  }
+
+  //palindromo("ovo");
+
+  function maiorValorArray(array) {
+    let maiorValor = array[0];
+    let indiceMaiorValor = 0;
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] > maiorValor) {
+        maiorValor = array[i];
+        indiceMaiorValor = i;
+      }
+    }
+    console.log(indiceMaiorValor);
+  }
+
+  //maiorValorArray([20, 3, 6, 7, 10, 1]);
+
+  function menorValorArray(array) {
+    let menorValor = array[0];
+    let indiceMenorValor = 0;
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] < menorValor) {
+        menorValor = array[i];
+        indiceMenorValor = i;
+      }
+    }
+    console.log(indiceMenorValor);
+  }
+
+  //menorValorArray([20, 0, -6, 7, 10, 1]);
+
+
+  function maiorNomeArray(array) {
+    let maiorNome = array[0];
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].length > maiorNome.length) {
+        maiorNome = array[i];
+      }
+    }
+    console.log(maiorNome);
+  }
+
+  // maiorNomeArray(['José', 'Lucas', 'Nádia', 'Fernanda', 'Cairo', 'Joana']);
+
+  function inteiroQueMaisSeRepete(arrayInteiros) {
+    let maiorRepeticao = 0;
+    let inteiroQueMaisSeRepete = 0;
+    for (let i = 0; i < arrayInteiros.length; i++) {
+      let repeticao = 0;
+      for (let j = 0; j < arrayInteiros.length; j++) {
+        if (arrayInteiros[i] == arrayInteiros[j]) {
+          repeticao++;
+        }
+      }
+      if (repeticao > maiorRepeticao) {
+        maiorRepeticao = repeticao;
+        inteiroQueMaisSeRepete = arrayInteiros[i];
+      }
+    }
+    console.log(inteiroQueMaisSeRepete);
+  }
+
+  //inteiroQueMaisSeRepete([2, 3, 2, 5, 8, 2, 3, 3, 3, 3]);
+
+
+  function somatorio(numero) {
+    let resultado = 0;
+    for (let i = 1; i <= numero; i++) {
+      resultado = resultado + i;
+    }
+    console.log(resultado);
+  }
+
+  //somatorio(6);
+
+  function verificaFimPalavra(palavra, fimPalavra) {
+
+    let resultado = "";
+    for (let i = palavra.length - fimPalavra.length; i < palavra.length; i++) {
+      resultado = resultado + palavra[i];
+    }
+    if (resultado == fimPalavra) {
+      console.log(true);
+    } else {
+      console.log(false);
+    }
+
+  }
+
+  //verificaFimPalavra('roberto', 'rto');
+  //verificaFimPalavra('joaofernando', 'fernan');
+
+
+
+</script>
+
+</html>
